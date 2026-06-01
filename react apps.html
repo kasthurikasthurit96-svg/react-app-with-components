@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>React App with State Management</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 400px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .count {
+      font-size: 40px;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    button {
+      padding: 10px 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      color: white;
+    }
+
+    .increase {
+      background-color: #4CAF50;
+    }
+
+    .decrease {
+      background-color: #f44336;
+    }
+
+    .reset {
+      background-color: #2196F3;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    // Header Component
+    function Header() {
+      return <h1>React Counter App</h1>;
+    }
+
+    // Counter Component with State Management
+    function Counter() {
+
+      // State Variable
+      const [count, setCount] = React.useState(0);
+
+      return (
+        <div>
+          <p className="count">{count}</p>
+
+          <button 
+            className="increase"
+            onClick={() => setCount(count + 1)}>
+            Increase
+          </button>
+
+          <button 
+            className="decrease"
+            onClick={() => setCount(count - 1)}>
+            Decrease
+          </button>
+
+          <button 
+            className="reset"
+            onClick={() => setCount(0)}>
+            Reset
+          </button>
+        </div>
+      );
+    }
+
+    // Main App Component
+    function App() {
+      return (
+        <div className="container">
+          <Header />
+          <Counter />
+        </div>
+      );
+    }
+
+    // Render App
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+
+  </script>
+
+</body>
+</html>
